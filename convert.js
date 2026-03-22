@@ -421,6 +421,11 @@ const countriesMeta = {
         pattern: "英国|United Kingdom|UK|伦敦|London|🇬🇧",
         icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Kingdom.png",
     },
+    荷兰: {
+        weight: 65,
+        pattern: "荷兰|荷|NL|nl|Netherlands|netherlands|阿姆斯特丹|Amsterdam|amsterdam|🇳🇱",
+        icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netherlands.png",
+    },
     澳大利亚: {
         pattern: "澳洲|澳大利亚|AU|Australia|🇦🇺",
         icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Australia.png",
