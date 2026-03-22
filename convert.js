@@ -79,6 +79,30 @@ const {
     countryThreshold,
 } = buildFeatureFlags(rawArgs);
 
+/**
+ * 对导入的节点做轻量规范化，避免部分 3x-ui 生成的 REALITY 节点在 Mihomo 中
+ * 因默认证书校验或缺省 UDP/XUDP 字段而出现测速异常。
+ */
+function normalizeImportedProxies(proxies) {
+    return (proxies || []).map((proxy) => {
+        const normalized = { ...proxy };
+
+        if (normalized.type === "vless" && normalized["reality-opts"]) {
+            normalized["skip-cert-verify"] = true;
+
+            if (typeof normalized.udp === "undefined") {
+                normalized.udp = true;
+            }
+
+            if (typeof normalized["packet-encoding"] === "undefined") {
+                normalized["packet-encoding"] = "xudp";
+            }
+        }
+
+        return normalized;
+    });
+}
+
 function getCountryGroupNames(countryInfo, minCount) {
     const filtered = countryInfo.filter((item) => item.nodes.length >= minCount);
 
@@ -820,7 +844,7 @@ function buildProxyGroups({
 
 // eslint-disable-next-line no-unused-vars -- 通过 vm.runInContext 在 yaml_generator 中被调用
 function main(config) {
-    const resultConfig = { proxies: config.proxies };
+    const resultConfig = { proxies: normalizeImportedProxies(config.proxies) };
 
     /**
      * 解析订阅中的节点，分别得到：地区归类信息、低倍率节点名列表、落地节点名列表，
