@@ -424,7 +424,7 @@ const countriesMeta = {
     荷兰: {
         weight: 65,
         pattern: "荷兰|荷|NL|nl|Netherlands|netherlands|阿姆斯特丹|Amsterdam|amsterdam|🇳🇱",
-        icon: "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netherlands.png",
+        icon: "https://gcore.jsdelivr.net/gh/twitter/twemoji@master/assets/72x72/1f1f3-1f1f1.png",
     },
     澳大利亚: {
         pattern: "澳洲|澳大利亚|AU|Australia|🇦🇺",
